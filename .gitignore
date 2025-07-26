@@ -1,0 +1,15 @@
+*.out
+*.sh
+.vscode/*
+__pycache__
+*.cif
+*.json
+MP20_dataset/*.pt
+*.q
+cif_tmp/test
+*.txt
+slurm-*.out
+*.zip
+POSCAR*
+*.hdf5
+*.pkl

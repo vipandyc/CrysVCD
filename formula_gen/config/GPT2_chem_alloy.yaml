@@ -1,0 +1,11 @@
+type: "alloy"
+save_path: "gpt2_chem_alloy.pth"
+epochs: 100
+batch_size: 128
+lr: 1e-3
+n_ctx: 8
+n_embd: 128
+n_layer: 3
+n_head: 4
+n_samples: 10
+atomic_embedding: electronic_config # one_hot or electronic_config
