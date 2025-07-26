@@ -9,8 +9,8 @@ The backbone of this project is built based on DiffCSP ([DiffCSP](https://github
 
 1. **(Recommended)** Create a conda virtual environment. We don't recommend you specify python version at this stage. If you insist in specifying one, we recommend `python=3.12`.
 ```
-conda create -n crygen
-conda activate crygen
+conda create -n crysvcd
+conda activate crysvcd
 ```
 2. Install the torch version (recommended with CUDA GPU) 2.4.1. Please check the cuda version most compatible to your machine on the official torch website ([torch website](https://pytorch.org/get-started/previous-versions/)). **Important: please specify `"numpy<2"` in the command.** For example run:
 ```
