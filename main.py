@@ -14,7 +14,6 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--dataset", type=str, required=False, default="")
     parser.add_argument("-g", "--generate", type=str, choices=["gpt2_alloy", "gpt2_ionic", "crygen_alloy", "crygen_ionic"], required=False)
     parser.add_argument("-b", "--generate_batch_size", type=int, required=False, default=4)
-    parser.add_argument("-a", "--active_learning", action="store_true")
     parser.add_argument("-nf", "--n_formula", type=int, required=False, default=1)
     parser.add_argument("-ns", "--n_structure_per_formula", type=int, required=False, default=4)
     parser.add_argument("-s", "--save_path", type=str, required=False, default="./cif_tmp")
@@ -55,36 +54,3 @@ if __name__ == "__main__":
             else:
                 formulas = args.formula
             crygen_inference(args.save_path, args.config_crygen, formulas, args.prop_dict, args.n_structure_per_formula, args.generate_batch_size)
-
-    if args.active_learning:
-        from CRYGEN_model.CRYGEN_configs import active_learning_config, training_config
-        from mattersim.forcefield import MatterSimCalculator
-        import ase.io
-        from glob import glob
-        from ase.optimize import GPMin
-        from ase.vibrations import Vibrations
-        i = 0
-        while i < active_learning_config["n_iteration"]:
-            alloy_formulas = GPT2_chem.generate_formula("alloy", active_learning_config["n_alloy_formula"])
-            ionic_formulas = GPT2_chem.generate_formula("ionic", active_learning_config["n_ionic_formula"])
-            formulas = alloy_formulas + ionic_formulas
-            structure_tmp_dir = os.path.join(args.save_path, f"active_learning_structure_tmp")
-            os.makedirs(structure_tmp_dir, exist_ok=True)
-            for formula in formulas:
-                crygen_inference(structure_tmp_dir, formula, active_learning_config["n_structure_per_formula"])
-            device = training_config["device"]
-            mattersimcalc = MatterSimCalculator(device=device)
-            for cif_file in glob(os.path.join(structure_tmp_dir, "*/*.cif")):
-                atoms = ase.io.read(cif_file)
-                atoms.calc = mattersimcalc
-                dyn = GPMin(atoms)
-                converged = dyn.run(fmax=0.01, steps=150)
-                if not converged:
-                    continue
-                    pass
-                vib = Vibrations(atoms, name="vib_pristine")
-                vib.clean()
-                vib.run()
-                eigenvalues = vib.get_energies()
-                vib.clean()
-            i += 1
