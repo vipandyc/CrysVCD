@@ -36,15 +36,15 @@ pip install transformers
 
 
 ## Getting started
-To test if your installation is done properly, simply run `main.py` to train a few epochs:
+To test if your installation is done properly, simply run `main.py` to train a few epochs and generate some crystals:
 ```
 # Training
-python -t gpt2_ionic
-python -t gpt2_alloy
-python -t crygen
+python main.py -t gpt2_ionic
+python main.py -t gpt2_alloy
+python main.py -t crygen
 # Generation
-python -g crygen_alloy -nf 100 # generate 100 chemical formulas and their crystal structures
-python -g crygen_ionic -nf 100
+python main.py -g crygen_alloy -nf 100 # generate 100 chemical formulas and their crystal structures
+python main.py -g crygen_ionic -nf 100
 ```
 
 Stay tuned for more detailed documentation of this code!
