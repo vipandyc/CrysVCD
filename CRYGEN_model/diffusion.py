@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.data import Batch
-from typing import Any, Dict, Literal, Optional
+from typing import Any, Dict, Literal
 from tqdm import tqdm
 from .cspnet import CSPNet
 from .utils.diff_utils import BetaScheduler, SigmaScheduler, d_log_p_wrapped_normal

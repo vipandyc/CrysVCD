@@ -8,7 +8,7 @@ from pymatgen.core.structure import Structure
 from pymatgen.core.lattice import Lattice
 from pymatgen.io.cif import CifWriter
 from p_tqdm import p_map
-from . import PARENT_PATH, get_save_path
+from . import get_save_path
 from .utils.eval_utils import lattices_to_params_shape, get_crystals_list
 from .diffusion import CSPDiffusion  
 from .CRYGEN_configs import get_config
