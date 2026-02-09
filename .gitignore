@@ -12,4 +12,3 @@ slurm-*.out
 *.zip
 POSCAR*
 *.hdf5
-*.pkl
