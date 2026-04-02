@@ -48,3 +48,6 @@ python main.py -g crygen_ionic -nf 100
 ```
 
 Stay tuned for more detailed documentation of this code!
+
+## MLIP workflow for energy-above-hull and thermal conductivity prediction
+Use `scripts/mlip_screen_ehull.py` and `scripts/mlip_screen_kappa.py` to screen the thermodynamically stable materials and find high-thermal-conductivity materials with MatterSim universal MLIP.
