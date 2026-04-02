@@ -86,7 +86,7 @@ Ehull_vals_crygen = []
 Ehull_vals_diffcsp = []
 
 if __name__ == "__main__":
-    API_KEY = "Yd2jih656GIoA2Ksfu57XrmOGh6seR2P"  # Replace with your Materials Project API key
+    API_KEY = "GEEEYOUARESOBEAUTIFUL"  # Replace with your Materials Project API key
 
     '''CIF_DIR = "../cif_tmp/crygen_cifs/"
 
